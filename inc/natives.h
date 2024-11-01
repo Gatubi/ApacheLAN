@@ -2735,7 +2735,7 @@ namespace PHYSINST2
 namespace PLAYER
 {
 	static void TELEPORT_ACTOR(Actor actor, float x, float y, float z, BOOL p4, BOOL p5, BOOL p6) { invoke<Void>(0x2D54B916, actor, x, y, z, p4, p5, p6); } // 0x2D54B916
-	static void TELEPORT_ACTOR_WITH_HEADING(Actor actor, float x, float y, float z, float heading, BOOL p5, BOOL p6, BOOL p7) { invoke<Void>(0xE4DE507C, actor, x, y, z, heading, p5, p6, p7); } // 0xE4DE507C
+	static void TELEPORT_ACTOR_WITH_HEADING(Actor actor, u64 combined, float z, float heading, BOOL p5, BOOL p6, BOOL p7) { invoke<Void>(0xE4DE507C, actor, combined, z, heading, p5, p6, p7); } // 0xE4DE507C
 	static Any GET_MAX_SPEED(Any p0) { return invoke<Any>(0x6B3A39A9, p0); } // 0x6B3A39A9
 	static void GET_POSITION(Actor actor, float* x, float* y, float* z) { invoke<Void>(0x99BD9D6F, actor, x, y, z); } // 0x99BD9D6F
 	static float GET_HEADING(Actor actor) { return invoke<float>(0x42DE39F0, actor); } // 0x42DE39F0

@@ -8,8 +8,9 @@ void TeleportToArmadillo()
 	Actor localActor = PLAYER::GET_PLAYER_ACTOR(PLAYER::GET_LOCAL_SLOT());
 	float heading = PLAYER::GET_HEADING(localActor);
 
+	u64 combined = (static_cast<u64>(*reinterpret_cast<u32*>(&coords.y)) << 32) | *reinterpret_cast<u32*>(&coords.x);
 	if (ACTOR::IS_ACTOR_VALID(localActor)) {
-		PLAYER::TELEPORT_ACTOR_WITH_HEADING(localActor, coords.x, coords.y, coords.z, heading, false, false, false);
+		PLAYER::TELEPORT_ACTOR_WITH_HEADING(localActor, combined, coords.z, heading, false, false, false);
 	}
 }
 
