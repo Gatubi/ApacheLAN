@@ -1,5 +1,6 @@
 #pragma once
 #include "types.h"
+#include "enums.h"
 #include "nativeCaller.h"
 
 namespace SYSTEM
@@ -1334,7 +1335,7 @@ namespace GAME
 	static void TERMINATE_THIS_SCRIPT() { invoke<Void>(0x245B6AB6); } // 0x245B6AB6
 	static int GET_THIS_SCRIPT_ID() { return invoke<int>(0x9C424E0D); } // 0x9C424E0D
 	static BOOL IS_SCRIPT_VALID(Any p0) { return invoke<BOOL>(0x45F7D589, p0); } // 0x45F7D589
-	static BOOL DOES_SCRIPT_EXIST(Any p0) { return invoke<BOOL>(0xDEAB87AB, p0); } // 0xDEAB87AB
+	static BOOL DOES_SCRIPT_EXIST(const char* p0) { return invoke<BOOL>(0xDEAB87AB, p0); } // 0xDEAB87AB
 	static BOOL IS_EXITFLAG_SET() { return invoke<BOOL>(0x687ECC3C); } // 0x687ECC3C
 	static int _0x4417C9F2(Any p0) { return invoke<int>(0x4417C9F2, p0); } // 0x4417C9F2
 	static void _0x05719022(Any p0) { invoke<Void>(0x05719022, p0); } // 0x05719022
@@ -2244,7 +2245,7 @@ namespace LAYOUT
 	static void _0x5613615B(int p0) { invoke<Void>(0x5613615B, p0); } // 0x5613615B
 	static int _0xB54567B9(int p0) { return invoke<int>(0xB54567B9, p0); } // 0xB54567B9
 	static int REQUEST_ASSET(const char* assetDir, int assetType) { return invoke<int>(0x9AA02DA7, assetDir, assetType); } // 0x9AA02DA7
-	static Any GET_ASSET_ID(Any p0) { return invoke<Any>(0x6005B514, p0); } // 0x6005B514
+	static Any GET_ASSET_ID(const char* AssetPath, enum eAssetType AssetType) { return invoke<Any>(0x6005B514, AssetPath, AssetType); } // 0x6005B514
 	static int REMOVE_ASSET(Any p0, Any p1) { return invoke<int>(0xE7829D28, p0, p1); } // 0xE7829D28
 	static Any _GET_TYPE_ID_USING_ACTOR_ENUM(Any p0) { return invoke<Any>(0x55E6227E, p0); } // 0x55E6227E
 	static Any GET_ASSET_NAME(Any p0) { return invoke<Any>(0x9EDBBB84, p0); } // 0x9EDBBB84

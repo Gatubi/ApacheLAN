@@ -1,5 +1,7 @@
 #include "script.h"
 #include "keyboard.h"
+#include <string>
+#include <format>
 
 void TeleportToArmadillo()
 {
@@ -14,15 +16,30 @@ void TeleportToArmadillo()
 	}
 }
 
+
+void PrintStatic()
+{
+	int static_ = (int)*getStaticPtr("$/content/scripting/designerdefined/short_update_thread", 119);
+	std::string msg = std::format("Static_119: {}", (float)static_);
+	HUD::HUD_CLEAR_OBJECTIVE_QUEUE();
+	HUD::_PRINT_SUBTITLE(msg.c_str(), 2.0f, true, 2, 1, 0, 0, 0);
+}
+
+
 void ScriptMain()
 {
 	srand(static_cast<unsigned int>(GetTickCount64()));
 	while (true)
 	{
-		drawRect(0.5, 0.5, 0.2, 0.2, 0, 0, 0, 160, 0.0f);
+		drawRect(0.5f, 0.5f, 0.2f, 0.2f, 0, 0, 0, 160, 0.0f);
+		drawText(0.5f, 0.5f, std::format("Font Id: {}", s_CustomFontId).c_str(), 255, 255, 255, 255, s_CustomFontId, 0.05f, Left);
+		drawText(0.8f, 0.8f, std::format("Font Id: {}", s_CustomFontId2).c_str(), 255, 255, 255, 255, s_CustomFontId2, 0.05f, Left);
 
 		if (IsKeyJustUp(VK_F8))
 			TeleportToArmadillo();
+
+		if (IsKeyJustUp(VK_F9))
+			PrintStatic();
 
 		scriptWait(0);
 	}

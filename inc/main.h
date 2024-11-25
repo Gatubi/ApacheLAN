@@ -22,6 +22,7 @@ IMPORT PUINT64 nativeCall();
 static void WAIT(DWORD time) { scriptWait(time); }
 
 IMPORT UINT64 *getGlobalPtr(int globalId);
+IMPORT UINT64 *getStaticPtr(const char* scriptName, int staticId);
 
 IMPORT void* getCommandFromHash(UINT64 hash);
 
@@ -38,11 +39,20 @@ IMPORT void drawText(float x, float y, const char* text, int r, int g, int b, in
 IMPORT void drawSprite(float x, float y, float width, float height, int spriteId, float rotation, int r, int g, int b, int a);
 
 /*	
-	IMPORTANT: Only call this function once, at the beginning of your script!
+	IMPORTANT: Only call this function once, in DllMain after scriptRegister!
 	This function accepts a path to a .ttf file, make sure to check the fontSize before registering it. Usually you always want to pass sizePixels=72.0f
 	RETURNS: fontId to use in drawText.
 */
 IMPORT int registerFont(const char* filename, float sizePixels);
+/*
+	This is only for when you reload your mod or if you want to actively provide a good reload functionality. The reason for this export is that if you reload your mod, you will use the ID of your registered font, so in order to get it back, you can call this export.
+	I would advise you to implement it this way:
+	customFontId = getCustomFontByPath("my/path/to/font.ttf");
+	if (customFontId < 0) {
+		customFontId = registerFont("my/path/to/font.ttf", 72.0f);
+	}
+*/
+IMPORT int getCustomFontByPath(const char* filename);
 /*
 	IMPORTANT: Only call this function once, at the beginning of your script!
 	This function accepts a path to any image format (.png, .jpg, .jpeg, ...)

@@ -1,10 +1,12 @@
 #pragma once
 
-enum FontID {
+enum FontID : int {
     Default = 0,
     Droid,
     Redemption,
-    Hapna
+    Hapna,
+    Volt,
+    Nightmare
 };
 
 enum TextJustification {
