@@ -7,12 +7,12 @@ void TeleportToArmadillo()
 {
 	Vector3 coords = { -2171.0f, 23.0f, 2592.0f };
 
-	Actor localActor = PLAYER::GET_PLAYER_ACTOR(PLAYER::GET_LOCAL_SLOT());
-	float heading = PLAYER::GET_HEADING(localActor);
+	Actor localActor = ACTOR::GET_PLAYER_ACTOR(ACTOR::GET_LOCAL_SLOT());
+	float heading = ACTOR::GET_HEADING(localActor);
 
 	u64 combined = (static_cast<u64>(*reinterpret_cast<u32*>(&coords.y)) << 32) | *reinterpret_cast<u32*>(&coords.x);
-	if (ACTOR::IS_ACTOR_VALID(localActor)) {
-		PLAYER::TELEPORT_ACTOR_WITH_HEADING(localActor, combined, coords.z, heading, false, false, false);
+	if (ENTITY::IS_ACTOR_VALID(localActor)) {
+		ACTOR::TELEPORT_ACTOR_WITH_HEADING(localActor, combined, coords.z, heading, false, false, false);
 	}
 }
 
@@ -22,7 +22,9 @@ void PrintStatic()
 	int static_ = (int)*getStaticPtr("$/content/scripting/designerdefined/short_update_thread", 119);
 	std::string msg = std::format("Static_119: {}", (float)static_);
 	HUD::HUD_CLEAR_OBJECTIVE_QUEUE();
-	HUD::_PRINT_SUBTITLE(msg.c_str(), 2.0f, true, 2, 1, 0, 0, 0);
+	HUD::PRINT_OBJECTIVE_B(msg.c_str(), 2.0f, true, 2, 1, 0, 0, 0);
+}
+
 }
 
 
