@@ -34,14 +34,12 @@ typedef signed short s16;
 typedef signed int s32;
 typedef signed long long s64;
 
-#define ALIGN8 __declspec(align(8))
-
 #pragma pack(push, 1)
 typedef struct
 {
-	ALIGN8 float x;
-	ALIGN8 float y;
-	ALIGN8 float z;
+	float x;
+	float y;
+	float z;
 } Vector3;
 #pragma pack(pop)
 
