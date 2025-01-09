@@ -59,3 +59,29 @@ IMPORT int getCustomFontByPath(const char* filename);
 	RETURNS: if successfull it returns the spriteId to use in drawSprite.
 */
 IMPORT int registerSprite(const char* filepath);
+
+
+/*
+	This function can be used to get all actors in the game world.
+	RETURNS: the number of actors found and in array.
+	
+	USAGE: (Kill all actors, but local actor)
+	constexpr int SIZE = 100;
+	int actors[SIZE];
+
+	int count = worldGetAllActors(actors, SIZE);
+
+	for (int i = 0; i < count; i++) {
+		if (!ENTITY::IS_ACTOR_VALID(actors[i])) continue;
+		if (ACTOR::IS_ACTOR_LOCAL_PLAYER(actors[i])) continue;
+
+		HEALTH::KILL_ACTOR(actors[i]);
+	}
+*/
+IMPORT int worldGetAllActors(int* arr, int size);
+
+
+/*
+	You can pass any object to this function and it will return the address of it in memory.
+*/
+IMPORT BYTE* getScriptHandleBaseAddress(int handle);
