@@ -35,6 +35,18 @@ IMPORT void* getCommandFromHash(UINT64 hash);
 	There are some default fonts that are already embedded into ScriptHook, you can look them up in the enums.h file!
 */
 IMPORT void drawRect(float x, float y, float width, float height, int r, int g, int b, int a, float rounding);
+/*
+* Color Tags available:
+* <red>Text</red>
+* <orange>Text</orange>
+* <yellow>Text</yellow>
+* <green>Text</green>
+* <blue>Text</blue>
+* <purple>Text</purple>
+* <brown>Text</brown>
+* <sepia>Text</sepia>
+* <grey>Text</grey>
+*/
 IMPORT void drawText(float x, float y, const char* text, int r, int g, int b, int a, int fontId, float fontSize, int justification);
 IMPORT void drawSprite(float x, float y, float width, float height, int spriteId, float rotation, int r, int g, int b, int a);
 

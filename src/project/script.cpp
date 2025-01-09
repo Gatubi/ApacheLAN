@@ -58,7 +58,7 @@ void ScriptMain()
 	{
 		//drawRect(0.5f, 0.5f, 0.2f, 0.2f, 0, 0, 0, 160, 0.0f);
 		//drawText(0.5f, 0.5f, std::format("Font Id: {}", s_CustomFontId).c_str(), 255, 255, 255, 255, s_CustomFontId, 0.05f, Left);
-		//drawText(0.8f, 0.8f, std::format("Font Id: {}", s_CustomFontId2).c_str(), 255, 255, 255, 255, s_CustomFontId2, 0.05f, Left);
+		drawText(0.8f, 0.8f, std::format("<red>Font Id:</red> {}", s_CustomFontId2).c_str(), 255, 255, 255, 255, s_CustomFontId2, 0.05f, Left);
 
 		if (IsKeyJustUp(VK_F8))
 			TeleportToArmadillo();
