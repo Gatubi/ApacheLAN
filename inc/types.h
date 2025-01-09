@@ -21,6 +21,8 @@ typedef int Mount;
 typedef int Volume;
 typedef int FireHandle;
 typedef int ScrHandle;
+typedef int Iterator;
+typedef int PersChar;
 
 typedef unsigned char u8;
 typedef unsigned short u16;

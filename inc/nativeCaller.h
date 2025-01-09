@@ -1,6 +1,7 @@
 #pragma once
 
 #include "main.h"
+#include <utility>
 
 template <typename T>
 static inline void nativePush(T val)
@@ -36,5 +37,12 @@ static inline R invoke(UINT64 hash, Ts... args)
 {
 	nativeInit(hash);
 	pushArgs(args...);
-	return *reinterpret_cast<R *>(nativeCall());
+	if constexpr (std::is_same_v<R, void>)
+	{
+		nativeCall();
+	}
+	else
+	{
+		return *reinterpret_cast<R*>(nativeCall());
+	}
 }
