@@ -71,6 +71,7 @@ IMPORT int getCustomFontByPath(const char* filename);
 	RETURNS: if successfull it returns the spriteId to use in drawSprite.
 */
 IMPORT int registerSprite(const char* filepath);
+IMPORT int registerSprite(u32 width, u32 height, const void* data);
 
 
 /*
@@ -97,3 +98,8 @@ IMPORT int worldGetAllActors(int* arr, int size);
 	You can pass any object to this function and it will return the address of it in memory.
 */
 IMPORT BYTE* getScriptHandleBaseAddress(int handle);
+
+/*
+	Get the current ScriptHook version, this is extremely important to check if your mod is using features from newer scripthook updates. Make sure to check if the minimal requirement is given with this enum and export.
+*/
+IMPORT eScriptHookVersion getVersion()

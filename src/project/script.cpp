@@ -50,7 +50,6 @@ void KillAllActors()
 	}
 }
 
-
 void ScriptMain()
 {
 	srand(static_cast<unsigned int>(GetTickCount64()));
@@ -58,7 +57,13 @@ void ScriptMain()
 	{
 		//drawRect(0.5f, 0.5f, 0.2f, 0.2f, 0, 0, 0, 160, 0.0f);
 		//drawText(0.5f, 0.5f, std::format("Font Id: {}", s_CustomFontId).c_str(), 255, 255, 255, 255, s_CustomFontId, 0.05f, Left);
-		drawText(0.8f, 0.8f, std::format("<red>Font Id:</red> {}", s_CustomFontId2).c_str(), 255, 255, 255, 255, s_CustomFontId2, 0.05f, Left);
+		//drawText(0.8f, 0.8f, std::format("<red>Font Id:</sepia> {}", s_CustomFontId2).c_str(), 255, 255, 255, 255, s_CustomFontId2, 0.05f, Left);
+		drawText(0.5f, 0.5f, 
+		"<outline><33c4ff>Wavy red text</33c4ff></outline> "
+			"<outline><sepia>Outlined sepia text</sepia></outline> "
+			"<0xFcAf17>Shaky hex color text</0xFCAF17> "
+			"<shadow>Text with shadow</shadow>",
+			255, 255, 255, 255, s_CustomFontId2, 0.03f, Center);
 
 		if (IsKeyJustUp(VK_F8))
 			TeleportToArmadillo();

@@ -14,3 +14,13 @@ enum TextJustification {
     Center,
     Right
 };
+
+enum class eScriptHookVersion
+{
+    VER_1_0 = 0,
+    VER_1_1,
+    VER_1_2,
+    VER_1_3,
+    VER_1_5,
+    VER_1_5_1
+};
