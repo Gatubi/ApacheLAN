@@ -113,4 +113,18 @@ enum eScriptHookVersion : int {
 
 IMPORT eScriptHookVersion getVersion();
 
+/*
+* You can use this export to call any script function defined in any script in the game.
+* The scriptname has to be the offical hash representation, that means: $/content/main would be atStringHash -> 0xC35697FF
+* The positon is the function address in memory of the script. You can get the position with MagicRDR's script decompiler. It will be next to the function definition.
+* Argcount and args, is relatively self explanatory.
+* 
+* Example to give money, via a function call in the main script:
+ 	std::vector<u64> args{1000, 1, 1 };
+	scriptCall("$/content/main", 107871, (u32)args.size(), args.data());
+
+	This will add 1000 $ to your bank account.
+
+* Important: it could be the case that the "pause" script functions won't work, simply because of the design of the game.
+*/
 IMPORT UINT64 scriptCall(const char* scriptName, UINT32 position, UINT32 argCount, PUINT64 args);
