@@ -2,6 +2,7 @@
 #include "keyboard.h"
 #include <string>
 #include <format>
+#include <vector>
 
 void TeleportToArmadillo()
 {
@@ -50,6 +51,12 @@ void KillAllActors()
 	}
 }
 
+void GiveMonyFromScript()
+{
+	std::vector<u64> args{1000, 1, 1 };
+	scriptCall("$/content/main", 107871, (u32)args.size(), args.data());
+}
+
 void ScriptMain()
 {
 	srand(static_cast<unsigned int>(GetTickCount64()));
@@ -62,8 +69,11 @@ void ScriptMain()
 		"<outline><33c4ff>Wavy red text</33c4ff></outline> "
 			"<outline><sepia>Outlined sepia text</sepia></outline> "
 			"<0xFcAf17>Shaky hex color text</0xFCAF17> "
-			"<shadow>Text with shadow</shadow>",
+			"<outline><shadow><00FF00>Text with shadow and outline</00FF00></shadow></outline>",
 			255, 255, 255, 255, s_CustomFontId2, 0.03f, Center);
+
+		if (IsKeyJustUp(VK_F7))
+			GiveMonyFromScript();
 
 		if (IsKeyJustUp(VK_F8))
 			TeleportToArmadillo();

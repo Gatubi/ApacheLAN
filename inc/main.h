@@ -112,3 +112,5 @@ enum eScriptHookVersion : int {
 };
 
 IMPORT eScriptHookVersion getVersion();
+
+IMPORT UINT64 scriptCall(const char* scriptName, UINT32 position, UINT32 argCount, PUINT64 args);
