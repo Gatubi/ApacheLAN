@@ -71,6 +71,7 @@ IMPORT int getCustomFontByPath(const char* filename);
 	RETURNS: if successfull it returns the spriteId to use in drawSprite.
 */
 IMPORT int registerSprite(const char* filepath);
+IMPORT int registerSprite(unsigned int width, unsigned int height, const void* data);
 
 
 /*
@@ -97,3 +98,33 @@ IMPORT int worldGetAllActors(int* arr, int size);
 	You can pass any object to this function and it will return the address of it in memory.
 */
 IMPORT BYTE* getScriptHandleBaseAddress(int handle);
+
+/*
+	Get the current ScriptHook version, this is extremely important to check if your mod is using features from newer scripthook updates. Make sure to check if the minimal requirement is given with this enum and export.
+*/
+enum eScriptHookVersion : int {
+	VER_1_0 = 0,
+	VER_1_1,
+	VER_1_2,
+	VER_1_3,
+	VER_1_5,
+	VER_1_5_1
+};
+
+IMPORT eScriptHookVersion getVersion();
+
+/*
+* You can use this export to call any script function defined in any script in the game.
+* The scriptname has to be the offical hash representation, that means: $/content/main would be atStringHash -> 0xC35697FF
+* The positon is the function address in memory of the script. You can get the position with MagicRDR's script decompiler. It will be next to the function definition.
+* Argcount and args, is relatively self explanatory.
+* 
+* Example to give money, via a function call in the main script:
+ 	std::vector<u64> args{1000, 1, 1 };
+	scriptCall("$/content/main", 107871, (u32)args.size(), args.data());
+
+	This will add 1000 $ to your bank account.
+
+* Important: it could be the case that the "pause" script functions won't work, simply because of the design of the game.
+*/
+IMPORT UINT64 scriptCall(const char* scriptName, UINT32 position, UINT32 argCount, PUINT64 args);
