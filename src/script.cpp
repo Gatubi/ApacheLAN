@@ -62,13 +62,10 @@ void ScriptMain()
 	srand(static_cast<unsigned int>(GetTickCount64()));
 	while (true)
 	{
-		//drawRect(0.5f, 0.5f, 0.2f, 0.2f, 0, 0, 0, 160, 0.0f);
-		//drawText(0.5f, 0.5f, std::format("Font Id: {}", s_CustomFontId).c_str(), 255, 255, 255, 255, s_CustomFontId, 0.05f, Left);
-		//drawText(0.8f, 0.8f, std::format("<red>Font Id:</sepia> {}", s_CustomFontId2).c_str(), 255, 255, 255, 255, s_CustomFontId2, 0.05f, Left);
 		drawText(0.5f, 0.5f, 
-		"<outline><33c4ff>Wavy red text</33c4ff></outline> "
+		"<outline><33c4ff>outlined text</33c4ff></outline> "
 			"<outline><sepia>Outlined sepia text</sepia></outline> "
-			"<0xFcAf17>Shaky hex color text</0xFCAF17> "
+			"<0xFcAf17>hex color text</0xFCAF17> "
 			"<outline><shadow><00FF00>Text with shadow and outline</00FF00></shadow></outline>",
 			255, 255, 255, 255, s_CustomFontId2, 0.03f, Center);
 

@@ -2,10 +2,10 @@
 
 #include <Windows.h>
 
-#include "..\..\inc\natives.h"
-#include "..\..\inc\types.h"
-#include "..\..\inc\enums.h"
-#include "..\..\inc\main.h"
+#include <natives.h>
+#include <types.h>
+#include <enums.h>
+#include <main.h>
 
 
 inline int s_CustomFontId{};
