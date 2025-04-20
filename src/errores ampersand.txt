@@ -1,0 +1,21 @@
+Operación Compilar iniciada..
+1>------ Operación Compilar iniciada: proyecto: ScriptHookRDR-Example, configuración: Release x64 ------
+1>ApacheClient.cpp
+1>ApacheServer.cpp
+1>C:\Users\nacho\source\repos\RDR1-Example-Script\inc\ApacheClient.h(10,42): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+1>C:\Users\nacho\source\repos\RDR1-Example-Script\inc\ApacheClient.h(10,42): error C2143: error de sintaxis: falta ',' delante de '&'
+1>ApacheUtils.cpp
+1>C:\Users\nacho\source\repos\RDR1-Example-Script\inc\ApacheClient.h(10,42): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+1>C:\Users\nacho\source\repos\RDR1-Example-Script\inc\ApacheClient.h(10,42): error C2143: error de sintaxis: falta ',' delante de '&'
+1>script.cpp
+1>C:\Users\nacho\source\repos\RDR1-Example-Script\inc\ApacheClient.h(10,42): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+1>C:\Users\nacho\source\repos\RDR1-Example-Script\inc\ApacheClient.h(10,42): error C2143: error de sintaxis: falta ',' delante de '&'
+1>C:\Users\nacho\source\repos\RDR1-Example-Script\src\script.cpp(25,15): warning C4566: el carácter representado por el nombre de carácter universal '\U0001F525' no se puede representar en la página de códigos actual (1252)
+1>C:\Users\nacho\source\repos\RDR1-Example-Script\src\script.cpp(118,26): error C2664: 'void StartApacheClient(const int)': el argumento 1 no puede convertirse de 'ApacheConfig' a 'const int'
+1>C:\Users\nacho\source\repos\RDR1-Example-Script\src\script.cpp(118,20): message : No hay disponible ningún operador de conversión definido por el usuario que pueda realizar esta conversión, o bien no se puede llamar al operador
+1>C:\Users\nacho\source\repos\RDR1-Example-Script\inc\ApacheClient.h(10,6): message : vea la declaración de 'StartApacheClient'
+1>Generando código...
+1>Compilación del proyecto "ScriptHookRDR-Example.vcxproj" terminada -- ERROR.
+2>------ Operación Compilar omitida: proyecto: ALL_BUILD, configuración: Release x64 ------
+2>Proyecto no seleccionado para compilarse para esta configuración de solución 
+========== Compilar: 0 correctos, 1 incorrectos, 1 actualizados, 1 omitidos ==========

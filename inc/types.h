@@ -1,3 +1,5 @@
+#define ALIGN8 __declspec(align(8))
+
 #pragma once
 
 #include <windows.h>
@@ -37,9 +39,9 @@ typedef signed long long s64;
 #pragma pack(push, 1)
 typedef struct
 {
-	float x;
-	float y;
-	float z;
+    ALIGN8 float x;
+    ALIGN8 float y;
+    ALIGN8 float z;
 } Vector3;
 #pragma pack(pop)
 

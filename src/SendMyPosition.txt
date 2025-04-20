@@ -1,0 +1,33 @@
+void SendMyPosition(int actorId)
+{
+    Actor localActor = ACTOR::GET_PLAYER_ACTOR(0);
+    Vector3 coords = { 0.0f , 0.0f, 0.0f };
+    ACTOR::GET_POSITION(localActor, &coords);
+
+    PositionPacket packet;
+    packet.actorId = actorId;
+    packet.posX = coords.x;
+    packet.posY = coords.y;
+    packet.posZ = coords.z;
+
+    int packetSize = sizeof(PositionPacket);
+
+    int sentBytes = sendto(
+        udpSocket,
+        reinterpret_cast<const char*>(&packet),
+        packetSize,
+        0,
+        (sockaddr*)&udpServer,
+        sizeof(udpServer)
+    );
+
+    if (sentBytes == SOCKET_ERROR) {
+        std::cout << "[Apache UDP] Error al enviar posición: " << WSAGetLastError() << std::endl;
+    }
+    else {
+        std::cout << "[Apache UDP] Posición enviada: X: " << coords.x
+            << " Y: " << coords.y
+            << " Z: " << coords.z
+            << " (Jugador " << actorId << ")" << std::endl;
+    }
+}

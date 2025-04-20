@@ -1,0 +1,162 @@
+Operación Compilar iniciada..
+1>------ Operación Compilar iniciada: proyecto: ScriptHookRDR-Example, configuración: Release x64 ------
+1>ApacheUtils.cpp
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(103,1): warning C4005: 'AF_IPX': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(457): message : vea la definición anterior de 'AF_IPX'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(147,1): warning C4005: 'AF_MAX': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(476): message : vea la definición anterior de 'AF_MAX'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(187,1): warning C4005: 'SO_DONTLINGER': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(399): message : vea la definición anterior de 'SO_DONTLINGER'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(240,25): error C2011: 'sockaddr': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(482): message : vea la declaración de 'sockaddr'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(442,5): error C2143: error de sintaxis: falta '}' delante de 'constante'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(442,5): error C2059: error de sintaxis: 'constante'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(496,1): error C2143: error de sintaxis: falta ';' delante de '}'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(496,10): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(496,20): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(577,1): warning C4005: 'IN_CLASSA': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(284): message : vea la definición anterior de 'IN_CLASSA'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(583,1): warning C4005: 'IN_CLASSB': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(290): message : vea la definición anterior de 'IN_CLASSB'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(589,1): warning C4005: 'IN_CLASSC': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(296): message : vea la definición anterior de 'IN_CLASSC'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(600,1): warning C4005: 'INADDR_ANY': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(301): message : vea la definición anterior de 'INADDR_ANY'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(602,1): warning C4005: 'INADDR_BROADCAST': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(303): message : vea la definición anterior de 'INADDR_BROADCAST'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\ws2def.h(638,28): error C2011: 'sockaddr_in': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(309): message : vea la declaración de 'sockaddr_in'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(136,23): error C2011: 'fd_set': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(65): message : vea la declaración de 'fd_set'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(156,1): warning C4005: 'FD_CLR': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(94): message : vea la definición anterior de 'FD_CLR'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(171,1): warning C4005: 'FD_SET': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(99): message : vea la definición anterior de 'FD_SET'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(180,16): error C2011: 'timeval': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(108): message : vea la declaración de 'timeval'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(236,17): error C2011: 'hostent': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(164): message : vea la declaración de 'hostent'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(249,16): error C2011: 'netent': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(177): message : vea la declaración de 'netent'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(256,17): error C2011: 'servent': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(184): message : vea la declaración de 'servent'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(268,18): error C2011: 'protoent': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(196): message : vea la declaración de 'protoent'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(364,24): error C2011: 'WSAData': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(319): message : vea la declaración de 'WSAData'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(462,18): error C2011: 'sockproto': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(491): message : vea la declaración de 'sockproto'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(504,16): error C2011: 'linger': nueva definición del tipo 'struct'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(528): message : vea la declaración de 'linger'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(517,1): warning C4005: 'SOMAXCONN': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(541): message : vea la definición anterior de 'SOMAXCONN'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(552,1): warning C4005: 'FD_READ': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(559): message : vea la definición anterior de 'FD_READ'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(555,1): warning C4005: 'FD_WRITE': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(560): message : vea la definición anterior de 'FD_WRITE'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(558,1): warning C4005: 'FD_OOB': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(561): message : vea la definición anterior de 'FD_OOB'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(561,1): warning C4005: 'FD_ACCEPT': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(562): message : vea la definición anterior de 'FD_ACCEPT'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(564,1): warning C4005: 'FD_CONNECT': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(563): message : vea la definición anterior de 'FD_CONNECT'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(567,1): warning C4005: 'FD_CLOSE': redefinición de macro
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(564): message : vea la definición anterior de 'FD_CLOSE'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1625,1): error C2375: 'accept': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(739): message : vea la declaración de 'accept'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1647,1): error C2375: 'bind': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(744): message : vea la declaración de 'bind'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1668,1): error C2375: 'closesocket': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(749): message : vea la declaración de 'closesocket'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1685,1): error C2375: 'connect': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(751): message : vea la declaración de 'connect'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1706,1): error C2375: 'ioctlsocket': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(756): message : vea la declaración de 'ioctlsocket'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1729,1): error C2375: 'getpeername': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(761): message : vea la declaración de 'getpeername'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1750,1): error C2375: 'getsockname': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(766): message : vea la declaración de 'getsockname'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1771,1): error C2375: 'getsockopt': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(771): message : vea la declaración de 'getsockopt'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1796,1): error C2375: 'htonl': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(778): message : vea la declaración de 'htonl'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1813,1): error C2375: 'htons': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(780): message : vea la declaración de 'htons'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1831,1): error C2375: 'inet_addr': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(782): message : vea la declaración de 'inet_addr'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1849,1): error C2375: 'inet_ntoa': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(784): message : vea la declaración de 'inet_ntoa'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1949,1): error C2375: 'listen': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(786): message : vea la declaración de 'listen'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1968,1): error C2375: 'ntohl': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(790): message : vea la declaración de 'ntohl'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(1985,1): error C2375: 'ntohs': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(792): message : vea la declaración de 'ntohs'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2002,1): error C2375: 'recv': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(794): message : vea la declaración de 'recv'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2025,1): error C2375: 'recvfrom': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(800): message : vea la declaración de 'recvfrom'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2052,1): error C2375: 'select': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(808): message : vea la declaración de 'select'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2077,1): error C2375: 'send': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(815): message : vea la declaración de 'send'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2100,1): error C2375: 'sendto': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(821): message : vea la declaración de 'sendto'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2127,1): error C2375: 'setsockopt': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(829): message : vea la declaración de 'setsockopt'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2152,1): error C2375: 'shutdown': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(836): message : vea la declaración de 'shutdown'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2172,1): error C2375: 'socket': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(840): message : vea la declaración de 'socket'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2197,1): error C2375: 'gethostbyaddr': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(847): message : vea la declaración de 'gethostbyaddr'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2219,1): error C2375: 'gethostbyname': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(852): message : vea la declaración de 'gethostbyname'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2236,1): error C2375: 'gethostname': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(854): message : vea la declaración de 'gethostname'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2276,1): error C2375: 'getservbyport': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(858): message : vea la declaración de 'getservbyport'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2295,1): error C2375: 'getservbyname': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(862): message : vea la declaración de 'getservbyname'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2314,1): error C2375: 'getprotobynumber': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(866): message : vea la declaración de 'getprotobynumber'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2331,1): error C2375: 'getprotobyname': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(868): message : vea la declaración de 'getprotobyname'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2351,1): error C2375: 'WSAStartup': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(872): message : vea la declaración de 'WSAStartup'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2371,1): error C2375: 'WSACleanup': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(876): message : vea la declaración de 'WSACleanup'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2388,1): error C2375: 'WSASetLastError': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(878): message : vea la declaración de 'WSASetLastError'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2405,1): error C2375: 'WSAGetLastError': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(880): message : vea la declaración de 'WSAGetLastError'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2426,1): error C2375: 'WSAIsBlocking': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(882): message : vea la declaración de 'WSAIsBlocking'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2444,1): error C2375: 'WSAUnhookBlockingHook': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(884): message : vea la declaración de 'WSAUnhookBlockingHook'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2462,1): error C2375: 'WSASetBlockingHook': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(886): message : vea la declaración de 'WSASetBlockingHook'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2480,1): error C2375: 'WSACancelBlockingCall': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(888): message : vea la declaración de 'WSACancelBlockingCall'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2498,1): error C2375: 'WSAAsyncGetServByName': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(890): message : vea la declaración de 'WSAAsyncGetServByName'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2526,1): error C2375: 'WSAAsyncGetServByPort': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(898): message : vea la declaración de 'WSAAsyncGetServByPort'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2554,1): error C2375: 'WSAAsyncGetProtoByName': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(906): message : vea la declaración de 'WSAAsyncGetProtoByName'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2580,1): error C2375: 'WSAAsyncGetProtoByNumber': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(913): message : vea la declaración de 'WSAAsyncGetProtoByNumber'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2606,1): error C2375: 'WSAAsyncGetHostByName': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(920): message : vea la declaración de 'WSAAsyncGetHostByName'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2632,1): error C2375: 'WSAAsyncGetHostByAddr': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(927): message : vea la declaración de 'WSAAsyncGetHostByAddr'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2662,1): error C2375: 'WSACancelAsyncRequest': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(936): message : vea la declaración de 'WSACancelAsyncRequest'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(2680,1): error C2375: 'WSAAsyncSelect': nueva definición; vinculación distinta
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock.h(938): message : vea la declaración de 'WSAAsyncSelect'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(4206,1): error C2059: error de sintaxis: '}'
+1>C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsock2.h(4206,1): error C2143: error de sintaxis: falta ';' delante de '}'
+1>Compilación del proyecto "ScriptHookRDR-Example.vcxproj" terminada -- ERROR.
+2>------ Operación Compilar omitida: proyecto: ALL_BUILD, configuración: Release x64 ------
+2>Proyecto no seleccionado para compilarse para esta configuración de solución 
+========== Compilar: 0 correctos, 1 incorrectos, 1 actualizados, 1 omitidos ==========

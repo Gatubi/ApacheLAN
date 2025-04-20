@@ -1,0 +1,63 @@
+```c++
+
+Actor SpawnRemotePlayer() {
+    // 1. Conseguí el actor local (personaje)
+    Actor localActor = ACTOR::GET_PLAYER_ACTOR(0); // 0 es el local slot en SP
+    Vector3 playerCoords = { 0.0f, 0.0f, 0.0f };
+    ACTOR::GET_POSITION(localActor, &playerCoords);
+
+    std::cout << "[Apache LAN] Posición del jugador: X:" << playerCoords.x << " Y:" << playerCoords.y << " Z:" << playerCoords.z << std::endl;
+
+    // 2. Sumarle un desplazamiento para que aparezca delante
+    Vector3 spawnCoords = {
+        playerCoords.x + 2.0f,   // X → adelante o a la derecha
+        playerCoords.y,          // Y → altura
+        playerCoords.z + 2.0f    // Z → adelante o a la izquierda
+    };
+
+    int actorEnum = 631; // Jenny
+    STREAM::STREAMING_REQUEST_ACTOR(actorEnum, true, false);
+
+    while (!STREAM::STREAMING_IS_ACTOR_LOADED(actorEnum, -1)) {
+        WAIT(0);
+    }
+
+    Layout playerLayout = OBJECT::FIND_NAMED_LAYOUT("PlayerLayout");
+
+    // 3. Crear el actor usando la posición calculada
+    Actor newActor = OBJECT::CREATE_ACTOR_IN_LAYOUT(
+        playerLayout,
+        "",
+        actorEnum,
+        Vector2(spawnCoords.x, spawnCoords.z), // XZ para la posición 2D
+        spawnCoords.y,                         // Y → altura
+        Vector2(0.0f, 0.0f),                   // Orientación en X/Z
+        0.0f                                   // Orientación Yaw
+    );
+
+    if (!ENTITY::IS_ACTOR_VALID(newActor)) {
+        printMessage("[Apache LAN] Dummy no creado!");
+        return 0;
+    }
+
+    // 4. Teletransportalo a la misma posición para forzar la ubicación
+    ACTOR::TELEPORT_ACTOR_WITH_HEADING(
+        newActor,
+        Vector2(spawnCoords.x, spawnCoords.z), // XZ
+        spawnCoords.y,                         // Y
+        0.0f,                                  // heading
+        false, false, false
+    );
+
+    // Debugs
+    Vector3 dummyPos = { 0.0f, 0.0f, 0.0f };
+    ACTOR::GET_POSITION(newActor, &dummyPos);
+    std::cout << "[Apache LAN] Dummy teletransportado a: X:" << dummyPos.x << " Y:" << dummyPos.y << " Z:" << dummyPos.z << std::endl;
+
+    printMessage("[Apache LAN] Dummy creado cerca de ti!");
+    return newActor;
+}
+
+```
+
+It has to be like this, right?

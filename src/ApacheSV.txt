@@ -1,0 +1,217 @@
+#define WIN32_LEAN_AND_MEAN // Esto le dice al sistema: "No me metas mierdas del siglo pasado"
+#include "types.h"
+#include <winsock2.h> // Siempre PRIMERO
+#include <ws2tcpip.h> // (Opcional pero recomendado para IPv6 y otras funciones)
+#include <windows.h>  // Siempre DESPUÉS
+#include "ApacheConfig.h"
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <string>
+#include <format>
+#include <vector>
+#include "ApacheUtils.h"
+#include "ApacheClient.h"
+#include <natives.h>
+
+#pragma comment(lib, "ws2_32.lib")
+
+std::unordered_map<int, Actor> remoteActors;
+
+SOCKET udpSocket, tcpSocket;
+sockaddr_in udpServer, tcpServer;
+
+bool running = true;
+
+Actor FindOrSpawnDummy(int actorId, Vector3 coords)
+{
+    // Si el actor ya existe, devuelve el existente
+    if (remoteActors.find(actorId) != remoteActors.end())
+    {
+        return remoteActors[actorId];
+    }
+
+    // Si no existe, lo creamos
+    printMessage("[Apache LAN] Spawneando nuevo dummy remoto...");
+
+    int actorEnum = 631; // Usa el actor que quieras, Jenny es un ejemplo
+
+    Actor newActor = OBJECT::CREATE_ACTOR_IN_LAYOUT(
+        OBJECT::GET_AMBIENT_LAYOUT(),
+        "",
+        actorEnum,
+        Vector2(coords.x, coords.y),
+        coords.z,
+        Vector2(0.0f, 0.0f),
+        0.0f
+    );
+
+    if (!ENTITY::IS_ACTOR_VALID(newActor))
+    {
+        printMessage("[Apache LAN] Dummy remoto NO creado!");
+        return 0;
+    }
+
+    ACTOR::TELEPORT_ACTOR_WITH_HEADING(
+        newActor,
+        Vector2(coords.x, coords.y),
+        coords.z,
+        0.0f,
+        false, false, false
+    );
+
+    printMessage("[Apache LAN] Dummy remoto creado correctamente!");
+
+    // Agregamos el nuevo actor al mapa
+    remoteActors[actorId] = newActor;
+
+    return newActor;
+}
+
+void ReceiveRemotePositions()
+{
+    SOCKET recvSocket = socket(AF_INET, SOCK_DGRAM, 0);
+    sockaddr_in localAddr;
+    localAddr.sin_family = AF_INET;
+    localAddr.sin_addr.s_addr = INADDR_ANY;
+    localAddr.sin_port = htons(7778);
+
+    if (bind(recvSocket, (sockaddr*)&localAddr, sizeof(localAddr)) == SOCKET_ERROR)
+    {
+        std::cout << "[Apache UDP] Error al bindear socket de recepcion!" << std::endl;
+        closesocket(recvSocket);
+        return;
+    }
+
+    std::cout << "[Apache UDP] Esperando datos remotos..." << std::endl;
+
+    char buffer[1024];
+    sockaddr_in senderAddr;
+    int senderAddrSize = sizeof(senderAddr);
+
+    while (running)
+    {
+        int bytesReceived = recvfrom(
+            recvSocket,
+            buffer,
+            sizeof(buffer) - 1,
+            0,
+            (sockaddr*)&senderAddr,
+            &senderAddrSize
+        );
+
+        if (bytesReceived > 0)
+        {
+            buffer[bytesReceived] = '\0'; // Null-terminate el mensaje recibido
+
+            // Parseamos los datos (formato: "playerId,x,y,z")
+            int playerId;
+            float x, y, z;
+            if (sscanf(buffer, "%d,%f,%f,%f", &playerId, &x, &y, &z) == 4)
+            {
+                Vector3 coords = { x, y, z };
+                FindOrSpawnDummy(playerId, coords);
+            }
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    }
+
+    closesocket(recvSocket);
+}
+
+void SendMyPosition(int actorId)
+{
+    Actor localActor = ACTOR::GET_PLAYER_ACTOR(0);
+    Vector3 coords = { 0.0f , 0.0f, 0.0f };
+    ACTOR::GET_POSITION(localActor, &coords);
+
+    PositionPacket packet;
+    packet.actorId;
+    packet.posX = coords.x;
+    packet.posY = coords.y;
+    packet.posZ = coords.z;
+
+    int packetSize = sizeof(PositionPacket);
+
+    int sentBytes = sendto(
+        udpSocket,
+        reinterpret_cast<const char*>(&packet),
+        packetSize,
+        0,
+        (sockaddr*)&udpServer,
+        sizeof(udpServer)
+    );
+
+    if (sentBytes == SOCKET_ERROR) {
+        std::cout << "[Apache UDP] Error al enviar posición: " << WSAGetLastError() << std::endl;
+    }
+    else {
+        std::cout << "[Apache UDP] Posición enviada: X: " << coords.x
+            << " Y: " << coords.y
+            << " Z: " << coords.z
+            << " (Jugador " << actorId << ")" << std::endl;
+    }
+}
+
+void ConnectTCP(const char* ip, int port)
+{
+    tcpSocket = socket(AF_INET, SOCK_STREAM, 0);
+    tcpServer.sin_family = AF_INET;
+    tcpServer.sin_port = htons(port);
+    inet_pton(AF_INET, ip, &tcpServer.sin_addr);
+
+    if (connect(tcpSocket, (sockaddr*)&tcpServer, sizeof(tcpServer)) == SOCKET_ERROR)
+    {
+        std::cout << "[Apache TCP] Error al conectar" << std::endl;
+        return;
+    }
+
+    std::cout << "[Apache TCP] Conectado al servidor" << std::endl;
+    send(tcpSocket, "Apache conectado", 18, 0);
+}
+
+void SendPosition(Vector3 coords) {
+    std::string message = std::to_string(coords.x) + "," + std::to_string(coords.y) + "," + std::to_string(coords.z);
+    sendto(udpSocket, message.c_str(), message.size(), 0, (sockaddr*)&udpServer, sizeof(udpServer));
+}
+
+void StartUDP(const char* ip, int port, int actorId)
+{
+    udpSocket = socket(AF_INET, SOCK_DGRAM, 0);
+    udpServer.sin_family = AF_INET;
+    udpServer.sin_port = htons(port);
+    inet_pton(AF_INET, ip, &udpServer.sin_addr);
+
+    std::cout << "[Apache UDP] Conectado al servidor UDP" << std::endl;
+
+    std::thread receiveThread(ReceiveRemotePositions);
+    receiveThread.detach();
+
+    while (running)
+    {
+        SendMyPosition(actorId);
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    }
+}
+
+
+void StartApacheClient(const char* ip, int actorId)
+{
+    WSADATA wsaData;
+    if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
+    {
+        std::cout << "[Apache] Error inicializando Winsock" << std::endl;
+        return;
+    }
+
+    std::thread recvThread(ReceiveRemotePositions);
+    recvThread.detach();
+
+    std::thread udpThread(StartUDP, ip, 7778, actorId);
+    udpThread.detach();
+}
+
+
+
+

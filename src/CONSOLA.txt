@@ -1,0 +1,27 @@
+?? Consola ApacheLAN activa!
+[ApacheConfig] Configuraci¾n cargada correctamente.
+[ApacheConfig] serverIP: 192.168.88.250
+[ApacheConfig] tcpPort: 7777
+[ApacheConfig] udpSendPort: 7778
+[ApacheConfig] udpRecvPort: 7779
+[ApacheConfig] actorId: 1
+[ApacheConfig] isServer: true
+[Apache] Winsock inicializado correctamente!
+[Apache] Winsock inicializado correctamente!
+[Apache] Threads de Cliente iniciados.
+[Apache UDP] Conectado al servidor UDP
+[Apache UDP] Esperando datos remotos en puerto 7779...
+[Apache] Servidor TCP escuchando en puerto 7777...
+[Apache TCP] Conectado al servidor[Apache] Servidor UDP escuchando en puerto 7778...
+[Apache UDP] Posici¾n enviada: X:
+-867.999 Y: 91.5033 Z: 2399.62 (Jugador 1)
+[Apache] Nuevo cliente TCP conectado!
+[Apache UDP] Posici¾n enviada: X: -867.999 Y: 91.5033 Z: 2399.62 (Jugador 1)[Apache] Nuevo cliente UDP conectado! Total: 1
+(y luego al conectar PC 2...)
+[Apache UDP] Posici¾n enviada: X: -867.999 Y: 91.5033 Z: [Apache] Posicion recibida de 1: -867.999, 91.5033, 2399.62
+2399.62 (Jugador 1)
+[Apache UDP] Error al parsear mensaje: ☻
+[Apache] Nuevo cliente TCP conectado!
+[Apache UDP] Posici¾n enviada: X: -867.999 Y: 91.5033 Z: 2399.62 (Jugador 1)
+[Apache] Posicion recibida de 1: -867.999, 91.5033, 2399.62
+[Apache UDP] Error al parsear mensaje: ☻

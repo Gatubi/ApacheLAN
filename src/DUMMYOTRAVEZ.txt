@@ -1,0 +1,71 @@
+Actor FindOrSpawnDummy(int actorId, Vector3 coords)
+{
+    printMessage("[Apache LAN] Paso 1: buscando en remoteActors");
+    if (remoteActors.find(actorId) != remoteActors.end())
+    {
+        Actor existingActor = remoteActors[actorId];
+        if (ENTITY::IS_ACTOR_VALID(existingActor))
+        {
+            printMessage("[Apache LAN] Paso 2: dummy ya existe y es válido");
+            return existingActor;
+        }
+    }
+
+    printMessage("[Apache LAN] Paso 3: solicitando modelo");
+    int actorEnum = 631;
+
+    STREAM::STREAMING_REQUEST_ACTOR(actorEnum, true, false);
+
+    int timeout = 5000;
+    int waited = 0;
+
+    while (!STREAM::STREAMING_IS_ACTOR_LOADED(actorEnum, -1))
+    {
+        WAIT(10);
+        waited += 10;
+        if (waited > timeout)
+        {
+            printMessage("[Apache LAN] Paso 4: TIMEOUT cargando actor");
+            return 0;
+        }
+    }
+
+    printMessage("[Apache LAN] Paso 5: modelo cargado, creando actor");
+
+    Vector3 spawnCoords = { spawnCoords.x , spawnCoords.y , spawnCoords.z };
+    Layout layout = OBJECT::FIND_NAMED_LAYOUT("PlayerLayout");
+
+    if (!layout)
+    {
+        printMessage("[Apache LAN] Layout 'PlayerLayout' no encontrado!");
+        return 0;
+    }
+
+    Actor newActor = OBJECT::CREATE_ACTOR_IN_LAYOUT(
+        layout,
+        "",
+        actorEnum,
+        spawnCoords,
+        Vector3(0.0f, 0.0f, 0.0f)
+    );
+
+    if (!ENTITY::IS_ACTOR_VALID(newActor))
+    {
+        printMessage("[Apache LAN] Paso 6: actor no es válido después de CREATE_ACTOR_IN_LAYOUT");
+        return 0;
+    }
+
+    printMessage("[Apache LAN] Paso 7: actor válido, habilitando dibujo");
+
+    //ACTOR_DRAW::SET_DRAW_ACTOR(newActor, true);
+    //HUD::ADD_BLIP_FOR_ACTOR(newActor, 299, 0.0f, 1, 1);
+
+    STREAM::STREAMING_EVICT_ACTOR(actorEnum, -1);
+
+    remoteActors[actorId] = newActor;
+
+    printMessage("[Apache LAN] Paso 8: dummy creado y agregado al mapa");
+
+    return newActor;
+
+}

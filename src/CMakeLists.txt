@@ -12,6 +12,12 @@ target_link_libraries(ScriptHookRDR-Example
     ${CMAKE_SOURCE_DIR}/lib/ScriptHookRDR.lib
 )
 
+target_include_directories(ScriptHookRDR-Example
+    PRIVATE
+        src
+        inc
+)
+
 # Set output directory
 set_target_properties(ScriptHookRDR-Example PROPERTIES
     SUFFIX ".asi"

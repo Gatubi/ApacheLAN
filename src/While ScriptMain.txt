@@ -1,0 +1,76 @@
+    bool partidaCargada = false;
+    bool serverIniciado = false;
+    bool clienteIniciado = false;
+
+    while (true)
+    {
+        Actor localActor = ACTOR::GET_PLAYER_ACTOR(0);
+
+        // Espera hasta que el jugador esté cargado en el juego (partida cargada)
+        if (!partidaCargada && ENTITY::IS_ACTOR_VALID(localActor))
+        {
+            partidaCargada = true;
+            printMessage("[Apache LAN] Partida detectada! El jugador ya esta en el mundo.");
+
+            //// Inicia el servidor SOLO si este jugador es el servidor
+            //if (config.isServer && !serverIniciado)
+            //{
+            //    StartApacheServer();
+            //    printMessage("[Apache LAN] Servidor iniciado!");
+            //    serverIniciado = true;
+            //}
+
+            //// Todos arrancan el cliente, pero solo después de detectar la partida cargada
+            //if (!clienteIniciado)
+            //{
+            //    StartApacheClient(config);
+            //    printMessage("[Apache LAN] Cliente iniciado!");
+            //    clienteIniciado = true;
+            //}
+        }
+
+        // ⬇️ Aquí va tu lógica de juego, después de que esté todo cargado
+
+        // Mostrar HUD de prueba
+        drawText(0.5f, 0.5f,
+            "<outline><00FF00>Hola Mundo Apache!</00FF00></outline> "
+            "<shadow><33c4ff>Apache Modding RDR1</33c4ff></shadow> "
+            "<0xFcAf17>#RespetaAlModder</0xFcAf17>",
+            255, 255, 255, 255, s_CustomFontId2, 0.05f, Center);
+
+        // Recorre los actores remotos (dummies) para debugear sus posiciones
+        for (const auto& pair : remoteActors)
+        {
+            int actorId = pair.first;
+            Actor actor = pair.second;
+
+            if (ENTITY::IS_ACTOR_VALID(actor))
+            {
+                Vector3 remotePos = { 0.0f, 0.0f, 0.0f };
+                ACTOR::GET_POSITION(actor, &remotePos);
+
+                std::cout << "[Apache LAN] Actor ID: " << actorId
+                    << " en posicion X:" << remotePos.x
+                    << " Y:" << remotePos.y
+                    << " Z:" << remotePos.z << std::endl;
+            }
+        }
+
+        // Comandos de prueba con teclas
+        if (IsKeyJustUp(VK_F6))
+        {
+            printMessage("[Apache LAN] F6 presionado! Spawneando Dummy de prueba.");
+            SpawnRemotePlayer();
+        }
+
+        if (IsKeyJustUp(VK_F7))
+            GiveMonyFromScript();
+
+        if (IsKeyJustUp(VK_F8))
+            TeleportToArmadillo();
+
+        if (IsKeyJustUp(VK_F11))
+            KillAllActors();
+
+        scriptWait(0);
+    }
