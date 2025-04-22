@@ -105,7 +105,7 @@ void ReceiveRemotePositions(int listenPort)
 
 void SendMyPosition(int actorId)
 {
-    Actor localActor = ACTOR::GET_PLAYER_ACTOR(0);
+    Actor localActor = ACTOR::GET_PLAYER_ACTOR(ACTOR::GET_LOCAL_SLOT());
     if (!ENTITY::IS_ACTOR_VALID(localActor)) {
         std::cout << "[Apache UDP] ERROR: No se pudo obtener el actor local!" << std::endl;
         return;
@@ -216,12 +216,14 @@ void StartUDP(const std::string& ip, int udpSendPort, int udpRecvPort, int actor
     std::thread udpRecvThread(ReceiveRemotePositions, udpRecvPort);
     udpRecvThread.detach();
 
+    clientRunning = true;
+
     // Bucle para enviar la posición de este jugador al servidor
     while (clientRunning)
     {
         SendMyPosition(actorId);
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));  // 20 updates por segundo aprox
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));  // 50 updates por segundo aprox
     }
 
     closesocket(udpSocket);

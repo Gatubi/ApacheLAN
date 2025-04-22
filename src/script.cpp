@@ -147,7 +147,7 @@ void ScriptMain()
 
 	while (true)
 	{
-		Actor localActor = ACTOR::GET_PLAYER_ACTOR(0);
+		Actor localActor = ACTOR::GET_PLAYER_ACTOR(ACTOR::GET_LOCAL_SLOT());
 
 		if (!partidaCargada && ENTITY::IS_ACTOR_VALID(localActor))
 		{

@@ -30,18 +30,14 @@ void FreezeDummy(Actor dummy)
     if (!ENTITY::IS_ACTOR_VALID(dummy))
         return;
 
-    // Limpia cualquier tarea previa
-    //TASKS::TASK_CLEAR(dummy);
+    // Congelar al Dummy fisicamente
+    ENTITY::SET_MOVER_FROZEN(dummy, true);
 
-    // Ordena que se quede quieto
-    //TASKS::TASK_STAND_STILL(dummy, 10.0f, 1, 1);
+    // Congelar animaciónes
+    PHYSICS::SET_PHYSINST_FROZEN(ACTOR::GET_PHYSINST_FROM_ACTOR(dummy), true);
 
-    // Refresca su estado para que no haga transiciones raras
-    //ACTOR::ACTOR_FORCE_NEXT_UPDATE(dummy);
-
-    // Lo hacemos invulnerable a daño
-    //ACTOR::SET_ACTOR_INVULNERABILITY(dummy, true);
-    //ACTOR::SET_ACTOR_UNKILLABLE(dummy, true);
+    // Anular tareas automaticas
+    TASKS::TASK_CLEAR(dummy);
 
     printMessage("[Apache LAN] Dummy congelado exitosamente!");
 }
