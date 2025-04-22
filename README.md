@@ -1,7 +1,7 @@
-# ScriptHookRDR Example Mod
+# ScriptHookRDR ApacheLAN Mod
 
 ## Purpose
-This repository is a good starting point for creating your first mod for Red Dead Redemption 1 PC, it contains everything required to get you started right away.
+This repository seeks to create a Multiplayer LAN experience to enjoy RDR1 with friends in PC
 
 ## Contributing
 If you want to contribute in any way to this example project, feel free to create a pull request.
