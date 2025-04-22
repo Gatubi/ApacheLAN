@@ -30,14 +30,18 @@ void FreezeDummy(Actor dummy)
     if (!ENTITY::IS_ACTOR_VALID(dummy))
         return;
 
+    // Anular tareas automaticas
+    TASKS::TASK_CLEAR(dummy);
+
     // Congelar al Dummy fisicamente
     ENTITY::SET_MOVER_FROZEN(dummy, true);
 
     // Congelar animaciónes
     PHYSICS::SET_PHYSINST_FROZEN(ACTOR::GET_PHYSINST_FROM_ACTOR(dummy), true);
 
-    // Anular tareas automaticas
-    TASKS::TASK_CLEAR(dummy);
+    // Protección opcional
+    ACTOR::SET_ACTOR_INVULNERABILITY(dummy, true);
+    ACTOR::SET_ACTOR_UNKILLABLE(dummy, true);
 
     printMessage("[Apache LAN] Dummy congelado exitosamente!");
 }
@@ -87,6 +91,8 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
 
     ACTOR_DRAW::SET_DRAW_ACTOR(newActor, true);
     HUD::ADD_BLIP_FOR_ACTOR(newActor, 299, 0.0f, 1, 1);
+
+    scriptWait(0); // Espera 1 frame para asegurar que se termine de spawnear
 
     // Congelamos al dummy para que no se mueva ni actúe solo
     FreezeDummy(newActor);
