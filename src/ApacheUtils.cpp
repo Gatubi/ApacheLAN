@@ -27,8 +27,13 @@ void IniciaWinsockUnaVez()
 
 void FreezeDummy(Actor dummy)
 {
-    if (!ENTITY::IS_ACTOR_VALID(dummy))
+    if (!ENTITY::IS_ACTOR_VALID(dummy)) {
+        printMessage("[Apache LAN] El dummy recibido NO es válido. FreezeDummy cancelada.");
         return;
+    }
+    printMessage("[Apache LAN] Handle recibido: " + std::to_string(dummy));
+
+    printMessage("[Apache LAN] Dummy válido, congelando...");
 
     // Anular tareas automaticas
     TASKS::TASK_CLEAR(dummy);
@@ -88,8 +93,6 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
         printMessage("[Apache LAN] Dummy remoto NO creado!");
         return 0;
     }
-
-    scriptWait(0); // Espera 1 frame para asegurar que se termine de spawnear
 
     ACTOR_DRAW::SET_DRAW_ACTOR(newActor, true);
     HUD::ADD_BLIP_FOR_ACTOR(newActor, 299, 0.0f, 1, 1);
