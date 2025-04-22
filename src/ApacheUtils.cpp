@@ -89,10 +89,10 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
         return 0;
     }
 
+    scriptWait(0); // Espera 1 frame para asegurar que se termine de spawnear
+
     ACTOR_DRAW::SET_DRAW_ACTOR(newActor, true);
     HUD::ADD_BLIP_FOR_ACTOR(newActor, 299, 0.0f, 1, 1);
-
-    scriptWait(0); // Espera 1 frame para asegurar que se termine de spawnear
 
     // Congelamos al dummy para que no se mueva ni actúe solo
     FreezeDummy(newActor);
