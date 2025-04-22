@@ -57,7 +57,7 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
     }
 
     // Agregar validación antes de continuar
-    Actor localActor = ACTOR::GET_PLAYER_ACTOR(0);
+    Actor localActor = ACTOR::GET_PLAYER_ACTOR(ACTOR::GET_LOCAL_SLOT());
     if (!ENTITY::IS_ACTOR_VALID(localActor)) {
         printMessage("[Apache LAN] ERROR: No se pudo obtener el actor local!");
         return 0;
