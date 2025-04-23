@@ -37,14 +37,7 @@ void SafeLog(const std::string& message)
 
 void PrecacheActors()
 {
-	int actorEnum = 631; // Jenny u otro
-
-	STREAM::STREAMING_REQUEST_ACTOR(actorEnum, true, false);
-	while (!STREAM::STREAMING_IS_ACTOR_LOADED(actorEnum, -1)) {
-		scriptWait(0);  // << Esto sí es seguro en ScriptMain
-	}
-
-	printMessage("[Apache LAN] Modelos precargados!");
+	printMessage("[Apache LAN] Precarga omitida intencionalmente!");
 }
 
 //Actor SpawnRemotePlayer() {
