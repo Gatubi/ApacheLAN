@@ -68,7 +68,7 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
     // Skipping streaming for now to avoid WAIT issues
 
     Actor newActor = OBJECT::CREATE_ACTOR_IN_LAYOUT(
-        OBJECT::GET_AMBIENT_LAYOUT(),   // Puedes probar con FIND_NAMED_LAYOUT si es necesario
+        OBJECT::FIND_NAMED_LAYOUT("PlayerLayout"),   // Puedes probar con FIND_NAMED_LAYOUT si es necesario
         "",
         actorEnum,
         Vector2(spawnCoords.x, spawnCoords.y),
@@ -94,6 +94,8 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
     ACTOR_DRAW::SET_DRAW_ACTOR(newActor, true);
     HUD::ADD_BLIP_FOR_ACTOR(newActor, 299, 0.0f, 1, 1);
 
+    // Esperamos un momento antes de aplicar TASKs
+    scriptWait(100); // Importante si no hay streaming
 
     printMessage("[Apache LAN] Dummy creado y congelado! actorId: " + std::to_string(actorId));
 
