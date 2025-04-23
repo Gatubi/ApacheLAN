@@ -38,15 +38,8 @@ void FreezeDummy(Actor dummy)
     // Anular tareas automaticas
     TASKS::TASK_CLEAR(dummy);
 
-    // Congelar al Dummy fisicamente
-    ENTITY::SET_MOVER_FROZEN(dummy, true);
-
-    // Congelar animaciónes
-    PHYSICS::SET_PHYSINST_FROZEN(ACTOR::GET_PHYSINST_FROM_ACTOR(dummy), true);
-
-    // Protección opcional
-    ACTOR::SET_ACTOR_INVULNERABILITY(dummy, true);
-    ACTOR::SET_ACTOR_UNKILLABLE(dummy, true);
+    // Hacer que el NPC se quede de pie en el lugar (de forma indefinida)
+    TASKS::TASK_STAND_STILL(dummy, -1.f, 0, 0);
 
     printMessage("[Apache LAN] Dummy congelado exitosamente!");
 }
