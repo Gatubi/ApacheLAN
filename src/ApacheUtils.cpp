@@ -38,6 +38,8 @@ void FreezeDummy(Actor dummy)
 
 Actor FindOrSpawnDummy(int actorId, Vector3 coords)
 {
+    if (!clientRunning) return 0;
+
     printMessage("[Apache LAN] Entrando a FindOrSpawnDummy para actorId: " + std::to_string(actorId));
 
     // Verifica si el actor ya existe
@@ -63,11 +65,7 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
 
     int actorEnum = 608;  // Mr. McFarlane
 
-        // Cargamos el modelo antes de spawn
-    STREAM::STREAMING_REQUEST_ACTOR(actorEnum, true, false);
-    while (!STREAM::STREAMING_IS_ACTOR_LOADED(actorEnum, -1)) {
-        WAIT(0);  // Espera hasta que se cargue
-    }
+    // Skipping streaming for now to avoid WAIT issues
 
     Actor newActor = OBJECT::CREATE_ACTOR_IN_LAYOUT(
         OBJECT::GET_AMBIENT_LAYOUT(),   // Puedes probar con FIND_NAMED_LAYOUT si es necesario
@@ -85,11 +83,13 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
         return 0;
     }
 
+    printMessage("Dummy creado, ejecutando TASK_CLEAR...");
     // Anular tareas automaticas
     TASKS::TASK_CLEAR(newActor);
 
     // Hacer que el NPC se quede de pie en el lugar (de forma indefinida)
     TASKS::TASK_STAND_STILL(newActor, -1.f, 0, 0);
+    printMessage("Dummy congelado con TASK_STAND_STILL");
 
     ACTOR_DRAW::SET_DRAW_ACTOR(newActor, true);
     HUD::ADD_BLIP_FOR_ACTOR(newActor, 299, 0.0f, 1, 1);
