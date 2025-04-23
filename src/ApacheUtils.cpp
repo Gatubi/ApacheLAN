@@ -40,7 +40,7 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
 {
     printMessage("[Apache LAN] Entrando a FindOrSpawnDummy para actorId: " + std::to_string(actorId));
 
-    // Verifica si el actor ya existe
+    // Si el actor ya existe y es válido, reutilízalo
     if (remoteActors.find(actorId) != remoteActors.end())
     {
         Actor existingActor = remoteActors[actorId];
@@ -50,23 +50,11 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
         }
     }
 
-    // Agregar validación antes de continuar
-    //Actor localActor = ACTOR::GET_PLAYER_ACTOR(ACTOR::GET_LOCAL_SLOT());
-    //if (!ENTITY::IS_ACTOR_VALID(localActor)) {
-    //    printMessage("[Apache LAN] ERROR: No se pudo obtener el actor local!");
-    //    return 0;
-    //}
-
-    printMessage("[Apache LAN] Spawneando nuevo dummy remoto SIN REQUEST...");
-
-    Vector3 spawnCoords = { coords.x, coords.y, coords.z };
-
-    int actorEnum = 608;  // Mr. McFarlane
-
-    // Skipping streaming for now to avoid WAIT issues
+    Vector3 spawnCoords = coords;
+    int actorEnum = 631; // Jenny
 
     Actor newActor = OBJECT::CREATE_ACTOR_IN_LAYOUT(
-        OBJECT::FIND_NAMED_LAYOUT("PlayerLayout"),   // Puedes probar con FIND_NAMED_LAYOUT si es necesario
+        OBJECT::GET_AMBIENT_LAYOUT(),
         "",
         actorEnum,
         Vector2(spawnCoords.x, spawnCoords.y),
@@ -81,33 +69,18 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
         return 0;
     }
 
-    printMessage("Dummy creado, ejecutando TASK_CLEAR...");
-    // Anular tareas automaticas
-    TASKS::TASK_CLEAR(newActor);
-
-    // Hacer que el NPC se quede de pie en el lugar (de forma indefinida)
-    TASKS::TASK_STAND_STILL(newActor, -1.f, 0, 0);
-    printMessage("Dummy congelado con TASK_STAND_STILL");
-
     ACTOR_DRAW::SET_DRAW_ACTOR(newActor, true);
     HUD::ADD_BLIP_FOR_ACTOR(newActor, 299, 0.0f, 1, 1);
 
-    // Esperamos un momento antes de aplicar TASKs
-    scriptWait(100); // Importante si no hay streaming
+    // Aplicamos freeze
+    TASKS::TASK_CLEAR(newActor);
+    TASKS::TASK_STAND_STILL(newActor, -1.0f, 0, 0);
 
     printMessage("[Apache LAN] Dummy creado y congelado! actorId: " + std::to_string(actorId));
-
-    // Guardamos en el mapa
     remoteActors[actorId] = newActor;
 
     return newActor;
 }
-
-
-
-
-
-
 
 
 
