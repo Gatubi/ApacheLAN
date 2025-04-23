@@ -31,9 +31,6 @@ void FreezeDummy(Actor dummy)
         printMessage("[Apache LAN] El dummy recibido NO es válido. FreezeDummy cancelada.");
         return;
     }
-    printMessage("[Apache LAN] Handle recibido: " + std::to_string(dummy));
-
-    printMessage("[Apache LAN] Dummy válido, congelando...");
 
     // Anular tareas automaticas
     TASKS::TASK_CLEAR(dummy);
