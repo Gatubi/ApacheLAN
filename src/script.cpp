@@ -68,16 +68,16 @@ void PrecacheActors()
 //}
 
 
-void TeleportToArmadillo()
-{
-	Vector3 coords = { -2171.0f, 23.0f, 2592.0f };
-
-	Actor localActor = ACTOR::GET_PLAYER_ACTOR(ACTOR::GET_LOCAL_SLOT());
-	float heading = ACTOR::GET_HEADING(localActor);
-	if (ENTITY::IS_ACTOR_VALID(localActor)) {
-		ACTOR::TELEPORT_ACTOR_WITH_HEADING(localActor, Vector2(coords.x, coords.y), coords.z, heading, false, false, false);
-	}
-}
+//void TeleportToArmadillo()
+//{
+//	Vector3 coords = { -2171.0f, 23.0f, 2592.0f };
+//
+//	Actor localActor = ACTOR::GET_PLAYER_ACTOR(ACTOR::GET_LOCAL_SLOT());
+//	float heading = ACTOR::GET_HEADING(localActor);
+//	if (ENTITY::IS_ACTOR_VALID(localActor)) {
+//		ACTOR::TELEPORT_ACTOR_WITH_HEADING(localActor, Vector2(coords.x, coords.y), coords.z, heading, false, false, false);
+//	}
+//}
 
 void PrintStatic()
 {
