@@ -32,11 +32,6 @@ void FreezeDummy(Actor dummy)
         return;
     }
 
-    // Anular tareas automaticas
-    TASKS::TASK_CLEAR(dummy);
-
-    // Hacer que el NPC se quede de pie en el lugar (de forma indefinida)
-    TASKS::TASK_STAND_STILL(dummy, -1.f, 0, 0);
 
     printMessage("[Apache LAN] Dummy congelado exitosamente!");
 }
@@ -66,7 +61,13 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
 
     Vector3 spawnCoords = { coords.x, coords.y, coords.z };
 
-    int actorEnum = 631;  // Jenny
+    int actorEnum = 608;  // Mr. McFarlane
+
+        // Cargamos el modelo antes de spawn
+    STREAM::STREAMING_REQUEST_ACTOR(actorEnum, true, false);
+    while (!STREAM::STREAMING_IS_ACTOR_LOADED(actorEnum, -1)) {
+        WAIT(0);  // Espera hasta que se cargue
+    }
 
     Actor newActor = OBJECT::CREATE_ACTOR_IN_LAYOUT(
         OBJECT::GET_AMBIENT_LAYOUT(),   // Puedes probar con FIND_NAMED_LAYOUT si es necesario
@@ -84,11 +85,15 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
         return 0;
     }
 
+    // Anular tareas automaticas
+    TASKS::TASK_CLEAR(newActor);
+
+    // Hacer que el NPC se quede de pie en el lugar (de forma indefinida)
+    TASKS::TASK_STAND_STILL(newActor, -1.f, 0, 0);
+
     ACTOR_DRAW::SET_DRAW_ACTOR(newActor, true);
     HUD::ADD_BLIP_FOR_ACTOR(newActor, 299, 0.0f, 1, 1);
 
-    // Congelamos al dummy para que no se mueva ni actúe solo
-    FreezeDummy(newActor);
 
     printMessage("[Apache LAN] Dummy creado y congelado! actorId: " + std::to_string(actorId));
 
