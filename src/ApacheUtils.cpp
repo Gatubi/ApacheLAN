@@ -38,8 +38,6 @@ void FreezeDummy(Actor dummy)
 
 Actor FindOrSpawnDummy(int actorId, Vector3 coords)
 {
-    if (!clientRunning) return 0;
-
     printMessage("[Apache LAN] Entrando a FindOrSpawnDummy para actorId: " + std::to_string(actorId));
 
     // Verifica si el actor ya existe
