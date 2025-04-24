@@ -40,9 +40,8 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
 {
     printMessage("[Apache LAN] Entrando a FindOrSpawnDummy para actorId: " + std::to_string(actorId));
 
-    // Si el actor ya existe y es válido, reutilízalo
-    if (remoteActors.find(actorId) != remoteActors.end())
-    {
+    // Verifica si ya está creado
+    if (remoteActors.find(actorId) != remoteActors.end()) {
         Actor existingActor = remoteActors[actorId];
         if (ENTITY::IS_ACTOR_VALID(existingActor)) {
             printMessage("[Apache LAN] Dummy ya existe y es válido! actorId: " + std::to_string(actorId));
@@ -50,11 +49,20 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
         }
     }
 
-    Vector3 spawnCoords = coords;
-    int actorEnum = 631; // Jenny
+    // Setup de coordenadas
+    Vector3 spawnCoords = { coords.x, coords.y, coords.z };
+    int actorEnum = 631;  // Jenny u otro actor
+
+    // Cargar el modelo del actor de forma segura
+    STREAM::STREAMING_REQUEST_ACTOR(actorEnum, true, false);
+    while (!STREAM::STREAMING_IS_ACTOR_LOADED(actorEnum, -1)) {
+        scriptWait(0); // <-- seguro porque se llama dentro del hilo principal
+    }
+
+    printMessage("[Apache LAN] Actor cargado, procediendo a spawn...");
 
     Actor newActor = OBJECT::CREATE_ACTOR_IN_LAYOUT(
-        OBJECT::GET_AMBIENT_LAYOUT(),
+        OBJECT::FIND_NAMED_LAYOUT("PlayerLayout"),
         "",
         actorEnum,
         Vector2(spawnCoords.x, spawnCoords.y),
@@ -63,24 +71,28 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
         0.0f
     );
 
-    if (!ENTITY::IS_ACTOR_VALID(newActor))
-    {
+    if (!ENTITY::IS_ACTOR_VALID(newActor)) {
         printMessage("[Apache LAN] Dummy remoto NO creado!");
         return 0;
     }
 
+    // Congelar el actor
+    TASKS::TASK_CLEAR(newActor);
+    TASKS::TASK_STAND_STILL(newActor, -1.f, 0, 0); // Requiere estar después del spawn y esperar un poco
     ACTOR_DRAW::SET_DRAW_ACTOR(newActor, true);
     HUD::ADD_BLIP_FOR_ACTOR(newActor, 299, 0.0f, 1, 1);
 
-    // Aplicamos freeze
-    TASKS::TASK_CLEAR(newActor);
-    TASKS::TASK_STAND_STILL(newActor, -1.0f, 0, 0);
+    // Evict para liberar memoria si ya no es necesario
+    if (STREAM::STREAMING_IS_ACTOR_LOADED(actorEnum, -1)) {
+        STREAM::STREAMING_EVICT_ACTOR(actorEnum, -1);
+    }
 
     printMessage("[Apache LAN] Dummy creado y congelado! actorId: " + std::to_string(actorId));
     remoteActors[actorId] = newActor;
 
     return newActor;
 }
+
 
 
 
