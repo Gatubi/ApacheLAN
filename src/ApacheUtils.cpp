@@ -56,7 +56,7 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
     // Cargar el modelo del actor de forma segura
     STREAM::STREAMING_REQUEST_ACTOR(actorEnum, true, false);
     while (!STREAM::STREAMING_IS_ACTOR_LOADED(actorEnum, -1)) {
-        WAIT(0); // <-- seguro porque se llama dentro del hilo principal
+        WAIT(0);
     }
 
     printMessage("[Apache LAN] Actor cargado, procediendo a spawn...");
