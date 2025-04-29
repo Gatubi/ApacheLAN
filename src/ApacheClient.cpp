@@ -105,6 +105,8 @@ void ReceiveRemotePositions(int listenPort)
                 false, false, false
             );
 
+            RefreezeDummyAfterTeleport(dummy);  // 👈 esto lo mantiene quieto
+
             std::cout << "[Apache UDP] Teleport realizado para ActorID " << packet.actorId
                 << " a X=" << coords.x << " Y=" << coords.y << " Z=" << coords.z << std::endl;
         }
