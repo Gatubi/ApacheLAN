@@ -49,15 +49,9 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
         }
     }
 
-    // Setup de coordenadas
+    // Setup de coordenadas de ubicacion
     Vector3 spawnCoords = { coords.x, coords.y, coords.z };
     int actorEnum = 631;  // Jenny u otro actor
-
-    // Cargar el modelo del actor de forma segura
-    STREAM::STREAMING_REQUEST_ACTOR(actorEnum, true, false);
-    while (!STREAM::STREAMING_IS_ACTOR_LOADED(actorEnum, -1)) {
-        WAIT(0);
-    }
 
     printMessage("[Apache LAN] Actor cargado, procediendo a spawn...");
 
@@ -81,11 +75,6 @@ Actor FindOrSpawnDummy(int actorId, Vector3 coords)
     TASKS::TASK_STAND_STILL(newActor, -1.f, 0, 0); // Requiere estar después del spawn y esperar un poco
     ACTOR_DRAW::SET_DRAW_ACTOR(newActor, true);
     HUD::ADD_BLIP_FOR_ACTOR(newActor, 299, 0.0f, 1, 1);
-
-    // Evict para liberar memoria si ya no es necesario
-    if (STREAM::STREAMING_IS_ACTOR_LOADED(actorEnum, -1)) {
-        STREAM::STREAMING_EVICT_ACTOR(actorEnum, -1);
-    }
 
     printMessage("[Apache LAN] Dummy creado y congelado! actorId: " + std::to_string(actorId));
     remoteActors[actorId] = newActor;
