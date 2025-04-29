@@ -24,6 +24,16 @@ static std::unordered_map<int, Vector3> lastPositions;
 SOCKET udpSocket, tcpSocket;
 sockaddr_in udpServer, tcpServer;
 
+// Al inicio del archivo, antes o después de otras funciones auxiliares
+void RefreezeDummyAfterTeleport(Actor dummy)
+{
+    if (!ENTITY::IS_ACTOR_VALID(dummy)) return;
+
+    TASKS::TASK_CLEAR(dummy);
+    TASKS::TASK_STAND_STILL(dummy, -1.f, 0, 0);
+}
+
+
 void ReceiveRemotePositions(int listenPort)
 {
     sockaddr_in senderAddr;
@@ -94,6 +104,8 @@ void ReceiveRemotePositions(int listenPort)
                 0.0f,
                 false, false, false
             );
+
+            RefreezeDummyAfterTeleport(dummy);  // 👈 esto lo mantiene quieto
 
             std::cout << "[Apache UDP] Teleport realizado para ActorID " << packet.actorId
                 << " a X=" << coords.x << " Y=" << coords.y << " Z=" << coords.z << std::endl;
