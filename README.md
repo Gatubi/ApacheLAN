@@ -8,7 +8,7 @@ If you want to contribute in any way to this example project, feel free to creat
 
 ## Operation
 
-To use the mod you'll have to make sure RDR1 have firewall permissions in the network. Then you can configure the ApacheConfig.ini file with your IP address of the Server computer and your PC identification number. 
+To use the mod you'll have to make sure RDR1 have firewall permissions in the network. Then you can configure the ApacheConfig.ini file (you can find it in /src) with your IP address of the Server computer and your PC identification number. 
 
 ## Prerequisites
 - [CMake](https://cmake.org/download/)
