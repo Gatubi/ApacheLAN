@@ -6,6 +6,10 @@ This repository seeks to create a Multiplayer LAN experience to enjoy RDR1 with 
 ## Contributing
 If you want to contribute in any way to this example project, feel free to create a pull request.
 
+## Operation
+
+To use the mod you'll have to make sure RDR1 have firewall permissions in the network. Then you can configure the ApacheConfig.ini file with your IP address and your PC identificator. 
+
 ## Prerequisites
 - [CMake](https://cmake.org/download/)
 
